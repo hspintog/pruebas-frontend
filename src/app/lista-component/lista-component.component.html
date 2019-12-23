@@ -1,0 +1,77 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Empresas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Personas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Historial de acceso</a>
+    </li>
+</ul>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Personas</h4>
+        </div>
+        <div class="col-md-9">
+            <div class="btn-group float-right">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <strong >Ordenar por:</strong> Nombre
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button">Apellido</button>
+                    <button class="dropdown-item" type="button">Another action</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
+            </div>
+            <button class="btn-light btn btn-sm"></button>
+            <button class="btn-light btn btn-sm"></button>
+            <button class="btn-light btn btn-sm"></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">APELLIDO</th>
+                        <th scope="col">WEBSITE</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">EMAIL</th>
+                        <th scope="col">ADDRESS</th>
+                        <th scope="col">PHONE</th>
+                        <th scope="col">GENDER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of respuesta">
+                        <td></td>
+                        <td>
+                            <p class="nombre">{{item.first_name[0] | uppercase}}{{item.last_name[0] | uppercase}}</p>
+                        </td>
+                        <td></td>
+                        <td>
+                            <span class="badge badge-info" *ngIf="item.status === 'active'">{{item.status}}</span>
+                            <span class="badge badge-danger" *ngIf="item.status === 'inactive'">{{item.status}}</span>
+                        </td>
+                        <td><a [routerLink]="['/perfilUser/',item.id]" routerLinkActive="router-link-active">{{item.first_name}}</a></td>
+                        <td><a [routerLink]="['/perfilUser/',item.id]" routerLinkActive="router-link-active">{{item.last_name}}</a></td>
+                        <td>{{item.website}}</td>
+                        <td>{{item.dob}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.address}}</td>
+                        <td>{{item.phone}}</td>
+                        <td>{{item.gender}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
